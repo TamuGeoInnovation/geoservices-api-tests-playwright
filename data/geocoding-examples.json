@@ -16,12 +16,12 @@
         "attributeMatchers": [
           {
             "name": "latitude",
-            "path": "data.results.0.attributes.latitude",
+            "path": "$.data.results.[0].attributes.latitude",
             "value": "30.6037245"
           },
           {
             "name": "longitude",
-            "path": "data.results.0.attributes.longitude",
+            "path": "$.data.results[0].attributes.longitude",
             "value": "-96.3226782"
           }
         ]

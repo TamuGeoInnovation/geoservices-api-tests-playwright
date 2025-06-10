@@ -35,7 +35,7 @@ test.describe("Geocoding Tests", () => {
 
           // DEBUG:
           // Log the full query URL for debugging
-          console.log(`Query URL: ${queryWithApiKey.toString()}`);
+          // console.log(`Query URL: ${queryWithApiKey.toString()}`);
 
           // Make the geocoding API request
           const response = await page.request.get(queryWithApiKey.toString());
@@ -49,7 +49,7 @@ test.describe("Geocoding Tests", () => {
 
           // DEBUG:
           // Log response for debudebugging;
-          console.log(responseData);
+          // console.log(responseData);
 
           expect(responseData.statusCode).toBe(200);
 

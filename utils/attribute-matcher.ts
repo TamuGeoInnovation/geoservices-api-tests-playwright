@@ -1,3 +1,5 @@
+import jp from "jsonpath";
+
 /**
  * Utility functions for validating API responses against attribute matchers
  */
@@ -11,11 +13,11 @@ export interface AttributeMatcher {
 /**
  * Extracts a value from an object using a dot-notation path
  * @param obj - The object to extract the value from
- * @param path - The dot-notation path (e.g., "data.results.0.address")
+ * @param path - JPath notation of object attribute (e.g., "$.data.results.[0].address")
  * @returns The value at the specified path, or undefined if not found
  */
 export function extractValueFromPath(obj: any, path: string): any {
-  return path.split(".").reduce((current, key) => current && current[key], obj);
+  return jp.value(obj, path);
 }
 
 /**
