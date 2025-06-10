@@ -13,4 +13,16 @@ export interface TestCase {
   description?: string;
   input?: any; // Adjust type based on expected input structure
   expectedOutput?: any; // Adjust type based on expected output structure
+
+  /**
+   * Optional matchers for attributes in the response.
+   * This can be used to validate specific attributes in the response.
+   * Each matcher specifies a name, the path to the attribute in the response,
+   * and the expected value.
+   */
+  attributeMatchers?: Array<{
+    name: string;
+    path: string;
+    value: any;
+  }>;
 }

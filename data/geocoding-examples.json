@@ -6,12 +6,25 @@
       {
         "source": "pre-computed",
         "vintage": "updated continuously",
-        "query": "https://geoservices.tamu.edu/Api/Geocode/V5/?streetAddress=324%20E%2012TH%20ST&city=FAYETTEVILLE&state=ar&zip=72701&format=json&census=true&censusYear=allAvailable&notStore=false&refs=PreComputedPoints&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0"
+        "query": "https://geoservices.tamu.edu/Api/Geocode/V5/?streetAddress=324%20E%2012TH%20ST&city=FAYETTEVILLE&state=ar&zip=72701&format=json&census=true&censusYear=allAvailable&notStore=false&refs=PreComputedPoints&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0",
+        "attributeMatchers": []
       },
       {
         "source": "microsoft-footprints",
         "vintage": "updated continuously",
-        "query": "https://geoservices.tamu.edu/Api/Geocode/V5/?streetAddress=1207%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=allAvailable&notStore=false&refs=MicrosoftFootprints&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0"
+        "query": "https://geoservices.tamu.edu/Api/Geocode/V5/?streetAddress=1207%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=allAvailable&notStore=false&refs=MicrosoftFootprints&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0",
+        "attributeMatchers": [
+          {
+            "name": "latitude",
+            "path": "data.results.0.attributes.latitude",
+            "value": "30.6037245"
+          },
+          {
+            "name": "longitude",
+            "path": "data.results.0.attributes.longitude",
+            "value": "-96.3226782"
+          }
+        ]
       }
     ]
   }
