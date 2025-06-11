@@ -28,7 +28,8 @@ test.describe("Geocoding Tests", () => {
           console.log(`Running test: ${testCase.source} (${testCase.vintage})`);
 
           // Append the API Key query param to the query URL. Pull this from your environment variables and default to 'demo' test key.
-          console.log(process.env);
+          // console.log(process.env);
+
           const apiKey = process.env.API_KEY || "demo";
           const queryWithApiKey = new URL(testCase.query);
           queryWithApiKey.searchParams.append("apikey", apiKey);
@@ -71,12 +72,6 @@ test.describe("Geocoding Tests", () => {
             console.log(
               "No attribute matchers defined for this test case, skipping validation."
             );
-          }
-
-          // Example validations (adjust based on your API response structure)
-          if (responseData.data.results) {
-            expect(responseData.data.results).toBeInstanceOf(Array);
-            console.log(`Found ${responseData.data.results.length} results`);
           }
 
           // Log test completion

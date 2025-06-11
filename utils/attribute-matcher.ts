@@ -17,7 +17,9 @@ export interface AttributeMatcher {
  * @returns The value at the specified path, or undefined if not found
  */
 export function extractValueFromPath(obj: any, path: string): any {
-  return jp.value(obj, path);
+  const v = jp.value(obj, path);
+
+  return v;
 }
 
 /**
