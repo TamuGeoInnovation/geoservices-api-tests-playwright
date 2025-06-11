@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { TestCategory } from "../data/test-case.interface";
+import { TestCategory } from "../interfaces/test-case.interface";
 import { assertAttributeMatchers } from "../utils/attribute-matcher";
 
 import dotenv from "dotenv";
