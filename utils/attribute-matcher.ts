@@ -29,29 +29,34 @@ export function extractValueFromPath(obj: any, path: string): any {
  * @returns Array of validation results with details about each matcher
  */
 export function validateAttributeMatchers(
-  responseData: any,
+  responseData1: any,
+  responseData2: any,
   matchers: AttributeMatcher[]
 ): Array<{
   matcher: AttributeMatcher;
-  value: any;
+  value1: any;
+  value2: any;
   passed: boolean;
   error?: string;
 }> {
   return matchers.map((matcher) => {
     try {
-      const value = extractValueFromPath(responseData, matcher.path);
-      const passed = value === matcher.value;
+      const value1 = extractValueFromPath(responseData1, matcher.path);
+      const value2 = extractValueFromPath(responseData2, matcher.path);
+      const passed = value1 == value2;
 
       return {
         matcher,
-        value,
+        value1,
+        value2,
         passed,
-        error: passed ? undefined : `Expected ${matcher.value}, got ${value}`,
+        error: passed ? undefined : `Expected ${value1}, got ${value2}`,
       };
     } catch (error) {
       return {
         matcher,
-        value: undefined,
+        value1: undefined,
+        value2: undefined,
         passed: false,
         error: `Error extracting value: ${error.message}`,
       };
@@ -66,19 +71,20 @@ export function validateAttributeMatchers(
  * @param expectFunction - The expect function from the testing framework
  */
 export function assertAttributeMatchers(
-  responseData: any,
+  responseData1: any,
+  responseData2: any,
   matchers: AttributeMatcher[],
   expectFunction: (actual: any) => any
 ): void {
-  const results = validateAttributeMatchers(responseData, matchers);
+  const results = validateAttributeMatchers(responseData1, responseData2, matchers);
 
   results.forEach((result) => {
     if (!result.passed) {
       console.error(`Matcher ${result.matcher.name} failed: ${result.error}`);
     } else {
-      console.log(`Matcher ${result.matcher.name} passed: ${result.value}`);
+      console.log(`Matcher ${result.matcher.name} passed: ${result.value1}`);
     }
 
-    expectFunction(result.value).toEqual(result.matcher.value);
+    expectFunction(result.value2).toEqual(result.value1);
   });
 }

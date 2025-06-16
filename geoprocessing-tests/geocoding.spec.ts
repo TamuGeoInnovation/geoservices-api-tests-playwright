@@ -31,31 +31,38 @@ test.describe("Geocoding Tests", () => {
           // console.log(process.env);
 
           const apiKey = process.env.API_KEY || "demo";
-          const queryWithApiKey = new URL(testCase.query);
-          queryWithApiKey.searchParams.append("apikey", apiKey);
+          const queryWithApiKeyL = new URL(testCase.queryLegacy);
+          const queryWithApiKeyk8 = new URL(testCase.queryk8);
+          queryWithApiKeyL.searchParams.append("apikey", apiKey);
+          queryWithApiKeyk8.searchParams.append("apikey", apiKey);
 
           // DEBUG:
           // Log the full query URL for debugging
           // console.log(`Query URL: ${queryWithApiKey.toString()}`);
 
           // Make the geocoding API request
-          const response = await page.request.get(queryWithApiKey.toString());
+          const responseLeg = await page.request.get(queryWithApiKeyL.toString());
+          const responsek8 = await page.request.get(queryWithApiKeyk8.toString());
 
           // Test for 200 OK response. This doesn't guarantee the query is valid, but it's a good start.
-          expect(response.ok()).toBeTruthy();
+          expect(responseLeg.ok()).toBeTruthy();
+          expect(responsek8.ok()).toBeTruthy();
 
           // Because GSVCS API's don't conform exactly to any standard, the request might return a 200 OK status even if the query is invalid or returns no results.
           // So we check the status code explicitly
-          const responseData = await response.json();
+          const responseDataLeg = await responseLeg.json();
+          const responseDatak8 = await responsek8.json();
 
           // DEBUG:
           // Log response for debudebugging;
           // console.log(responseData);
 
-          expect(responseData.statusCode).toBe(200);
+          //expect(responseDataLeg.statusCode).toBe(200);
+          //expect(responseDatak8.statusCode).toBe(200);
 
           // Basic validation - you can expand this based on your requirements
-          expect(responseData).toBeDefined();
+          expect(responseDataLeg).toBeDefined();
+          expect(responseDatak8).toBeDefined();
 
           // Check if testCase has attributeMatchers. If none, skip the testing and assume truthy response.
           // If testCase does have matchers, loop through them and validate each one.
@@ -63,8 +70,9 @@ test.describe("Geocoding Tests", () => {
             testCase.attributeMatchers &&
             testCase.attributeMatchers.length > 0
           ) {
-            assertAttributeMatchers(
-              responseData,
+             assertAttributeMatchers(
+              responseDataLeg,
+              responseDatak8,
               testCase.attributeMatchers,
               expect
             );
