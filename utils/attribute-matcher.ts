@@ -43,7 +43,7 @@ export function validateAttributeMatchers(
     try {
       const value1 = extractValueFromPath(responseData1, matcher.path);
       const value2 = extractValueFromPath(responseData2, matcher.path);
-      const passed = value1 == value2;
+      const passed = value1 === value2;
 
       return {
         matcher,
