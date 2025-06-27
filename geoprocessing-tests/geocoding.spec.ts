@@ -38,7 +38,8 @@ test.describe("Geocoding Tests", () => {
 
           // DEBUG:
           // Log the full query URL for debugging
-          // console.log(`Query URL: ${queryWithApiKey.toString()}`);
+          // console.log(`QueryLegacy URL: ${queryWithApiKeyL.toString()}`);
+          // console.log(`Queryk8 URL: ${queryWithApiKeyk8.toString()}`);
 
           // Make the geocoding API request
           const responseLeg = await page.request.get(queryWithApiKeyL.toString());
