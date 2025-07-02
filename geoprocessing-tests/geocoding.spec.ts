@@ -11,7 +11,7 @@ var path = require("path");
 dotenv.config({ path: path.resolve(__dirname, "../.env") });
 
 // Load the test data once at module level
-const categories: Array<TestCategory> = require("../data/geocoding-apis-urlinp.json");
+const categories: Array<TestCategory> = require("../data/geocoding-apis-urlinp2.json");
 
 console.log(`Loaded ${categories.length} geocoding test categories`);
 
@@ -32,22 +32,24 @@ test.describe("Geocoding Tests", () => {
 
           //Get .csv file name and stabish a connection to the desired .csv file for the lost of Domains to test
           //NOTE: As of current version, the first Domain listed will be used as the base to be tested against.
-          const urls = parse(fs.readFileSync(path.join(__dirname, "../data/Domain_test1.csv")),{
+          const domainsCSV = parse(fs.readFileSync(path.join(__dirname, "../data/Domain_test1.csv")),{
             //Insert desired .csv formatting parameters.
           });
+          const domains = domainsCSV[0];
           const apiKey = process.env.API_KEY || "demo";
           var queries: URL[] = [];
           var responses: number[] = [];
-          for(const url in urls){
+          for(const index in domains){
             
             // Append the API Key query param to the query URL. Pull this from your environment variables and default to 'demo' test key.
             // console.log(process.env);
-            const queryWithApiKey = new URL(url+testCase.query);
+            const fullQuery = domains[index]+testCase.query;
+            console.log(fullQuery);
+            const queryWithApiKey = new URL(fullQuery);
             queryWithApiKey.searchParams.append("apikey", apiKey);
-            const fullQuery = queryWithApiKey;
 
             // Add the full query to a running array of all queries
-            queries.push(fullQuery);
+            queries.push(queryWithApiKey);
 
             // DEBUG:
             // Log the full query URL for debugging
@@ -73,10 +75,10 @@ test.describe("Geocoding Tests", () => {
           // Check if testCase has attributeMatchers. If none, skip the testing and assume truthy response.
           // If testCase does have matchers, loop through them and validate each one.
           if (testCase.attributeMatchers && testCase.attributeMatchers.length > 0){   
-            for (const responseCur in responses){
+            for (const index in responses){
               assertAttributeMatchers(
                 responses[0],
-                responseCur,
+                responses[index],
                 testCase.attributeMatchers,
                 expect
               );
