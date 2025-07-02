@@ -73,18 +73,20 @@ export function validateAttributeMatchers(
 export function assertAttributeMatchers(
   responseData1: any,
   responseData2: any,
-  matchers: AttributeMatcher[],
-  expectFunction: (actual: any) => any
-): void {
+  domain: any,
+  matchers: AttributeMatcher[]
+): boolean {
   const results = validateAttributeMatchers(responseData1, responseData2, matchers);
-
+  var ret = true;
   results.forEach((result) => {
     if (!result.passed) {
-      console.error(`Matcher ${result.matcher.name} failed: ${result.error}`);
+      console.error(`Matcher for ${domain} ${result.matcher.name} failed: ${result.error}`);
     } else {
-      console.log(`Matcher ${result.matcher.name} passed: ${result.value1}`);
+      console.log(`Matcher for ${domain} ${result.matcher.name} passed: ${result.value1}` );
     }
-
-    expectFunction(result.value2).toEqual(result.value1);
+    if (!(result.value1 === result.value2)){
+      ret = false;
+    }
   });
+  return ret;
 }
