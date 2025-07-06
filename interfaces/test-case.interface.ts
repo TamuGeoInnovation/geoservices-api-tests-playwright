@@ -7,7 +7,7 @@ export interface TestCategory {
 export interface TestCase {
   source: string;
   vintage: string;
-  queryLegacy: string;
+  query: string;
   queryk8: string;
   id?: number;
   name?: string;
