@@ -24,23 +24,25 @@ const addressesCSV = parse(fs.readFileSync(path.join(__dirname, addressCSVlocati
 
 dotenv.config({ path: path.resolve(__dirname, "../.env") });
 
-console.log(`Loaded ${addressesCSV.length} geocoding test categories`);
+// Load the test data once at module level
+const categories: Array<TestCategory> = require("../data/geocoding-addresses-single-noDomains.json");
+
+console.log(`Loaded ${categories.length} geocoding test categories`);
 
 test.describe("Geocoding Tests", () => {
-  // Dynamically create test suites for each row in the .csv
-  addressesCSV.forEach((row) => {
-    test.describe(row['Name'], () => {
+  // Dynamically create test suites for each category
+  categories.forEach((category) => {
+    test.describe(category.name, () => {
       test.beforeAll(() => {
-        console.log(`Starting ${row['Name']} test`);
+        console.log(`Starting ${category.name} tests`);
       });
 
-      // Create individual tests for each attribute case in the row
-      for(var iter: number = 0; iter < row['num_of_attributes']; iter+=1){
-        const testName = row[(2*iter) +1]; //testName = name of attribute being tested (ex: logitude, latitude)
-        const testLocation = row[(2*iter) +2] //location of data being tested in the API
-        test(`${testName} - Test ${iter + 1}:`, async ({
+      // Create individual tests for each test case in the category
+      category.tests.forEach((testCase, index) => {
+        test(`${category.name} - Test ${index + 1}: ${testCase.source}`, async ({
           page,
         }) => {
+          console.log(`Running test: ${testCase.source} (${testCase.vintage})`);
 
           const domains = domainsCSV[0];
           const apiKey = process.env.API_KEY || "demo";
@@ -49,7 +51,7 @@ test.describe("Geocoding Tests", () => {
             
             // Append the API Key query param to the query URL. Pull this from your environment variables and default to 'demo' test key.
             // console.log(process.env);
-            const fullQuery = domains[index]+row["URLaddress"];
+            const fullQuery = domains[index]+testCase.query;
             //console.log(fullQuery);
             const queryWithApiKey = new URL(fullQuery);
             queryWithApiKey.searchParams.append("apikey", apiKey);
@@ -74,18 +76,18 @@ test.describe("Geocoding Tests", () => {
             // Add the response to a running array of all queries
             responses.push(responseData);
           }
-
+          
           // Check if testCase has attributeMatchers. If none, skip the testing and assume truthy response.
           // If testCase does have matchers, loop through them and validate each one.
           var success: boolean[] = [];
-          if (row["num_of_attributes"] > 0){   
+          if (testCase.attributeMatchers && testCase.attributeMatchers.length > 0){   
             for (const index in responses){
               success.push(
                 assertAttributeMatchers(
                   responses[0], //Set as the expectation for responses[index]
-                  responses[index], //Currently tested response
-                  domains[index], //Provides name of which domain in being tested
-                  testLocation
+                  responses[index],
+                  domains[index],
+                  testCase.attributeMatchers
                 )
               )
             }
@@ -100,9 +102,9 @@ test.describe("Geocoding Tests", () => {
           }
 
           // Log test completion
-          console.log(`Completed test: ${testName}`);
+          console.log(`Completed test: ${testCase.source}`);
         });
-      };
+      });
     });
   });
 });

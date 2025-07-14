@@ -31,22 +31,22 @@ export function extractValueFromPath(obj: any, path: string): any {
 export function validateAttributeMatchers(
   responseData1: any,
   responseData2: any,
-  matchers: AttributeMatcher[]
+  location: any
 ): Array<{
-  matcher: AttributeMatcher;
+  location: any;
   value1: any;
   value2: any;
   passed: boolean;
   error?: string;
 }> {
-  return matchers.map((matcher) => {
+  return location.map((matcher) => {
     try {
-      const value1 = extractValueFromPath(responseData1, matcher.path);
-      const value2 = extractValueFromPath(responseData2, matcher.path);
+      const value1 = extractValueFromPath(responseData1, location);
+      const value2 = extractValueFromPath(responseData2, location);
       const passed = value1 === value2;
 
       return {
-        matcher,
+        location,
         value1,
         value2,
         passed,
@@ -54,7 +54,7 @@ export function validateAttributeMatchers(
       };
     } catch (error) {
       return {
-        matcher,
+        location,
         value1: undefined,
         value2: undefined,
         passed: false,
@@ -74,15 +74,15 @@ export function assertAttributeMatchers(
   responseData1: any,
   responseData2: any,
   domain: any,
-  matchers: AttributeMatcher[]
+  location: any
 ): boolean {
-  const results = validateAttributeMatchers(responseData1, responseData2, matchers);
+  const results = validateAttributeMatchers(responseData1, responseData2, location);
   var ret = true;
   results.forEach((result) => {
     if (!result.passed) {
-      console.error(`Matcher for ${domain} ${result.matcher.name} failed: ${result.error}`);
+      console.error(`Subtest for ${domain} ${result.location} failed: ${result.error}`);
     } else {
-      console.log(`Matcher for ${domain} ${result.matcher.name} passed: ${result.value1}` );
+      console.log(`Subtest for ${domain} ${result.location} passed: ${result.value1}` );
     }
     if (!(result.value1 === result.value2)){
       ret = false;
