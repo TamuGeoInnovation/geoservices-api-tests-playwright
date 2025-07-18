@@ -10,17 +10,21 @@ import { test, expect } from "@playwright/test";
 var path = require("path");
 
 
-//Get .csv file name and estabish a connection to the desired .csv file for the list of Domains to test
-//NOTE: As of current version, the first Domain listed will be used as the base to be tested against.
+//Get .csv file name and estabish a connection to the desired .csv file for the list of domains to test
+//NOTE: As of current version, the first Domain listed will be used as the base for all other domains to be tested against.
 const domainCSVlocation = "../data/Domain_testing2.csv";
 const addressCSVlocation = "../data/geocoding-addresses-full.csv";
 
-const domainsCSV = parse(fs.readFileSync(path.join(__dirname, domainCSVlocation)),{
+const domainsCSV = parse(fs.readFileSync(path.join(__dirname, domainCSVlocation), 'utf8'),{
   //Insert desired .csv formatting parameters.
 });
-const addressesCSV = parse(fs.readFileSync(path.join(__dirname, addressCSVlocation)),{
+const addressesCSV = parse(fs.readFileSync(path.join(__dirname, addressCSVlocation), 'utf8'),{
   //Insert desired .csv formatting parameters.
-  columns: true
+  columns: true //Sets first row of .csv to be the names of each column
+  /*
+    Proper .csv header format:
+    Name,URLaddress,num_of_attributes,attribute1_name,attribute1_location,attribute2_name,attribute2_location... ,attributeX_name,attributeX_location
+  */
 });
 
 dotenv.config({ path: path.resolve(__dirname, "../.env") });
@@ -77,7 +81,6 @@ test.describe("Geocoding Tests", () => {
           }
 
           // Check if current URL has attributes to test. If none, skip the testing and assume truthy response.
-          // If current URL does have matchers, loop through them and validate each one.
           let testResults: boolean[] = [];
           if (row["num_of_attributes"] > 0){   
             for (const index in responses){
@@ -86,11 +89,11 @@ test.describe("Geocoding Tests", () => {
                   responses[0], //Set as the expectation for responses[index]
                   responses[index], //Currently tested response
                   domains[index], //Provides name of which domain in being tested
-                  testLocation //Provide path to data to test
+                  testLocation //Provide path to data to be tested
                 )
               )
             }
-            for(const result of testResults){
+            for(const result of testResults){ //Test all results to be true. 
               expect(result).toBeTruthy();
             }
           } else {
