@@ -6,7 +6,7 @@
       {
         "source": "PreComputed_Points",
         "vintage": "updated continuously",
-        "query": "/Api/Geocode/V5/?streetAddress=324%20E%2012TH%20ST&city=FAYETTEVILLE&state=ar&zip=72701&format=json&census=true&censusYear=allAvailable&notStore=false&refs=PreComputedPoints&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0",
+        "query": "?streetAddress=324%20E%2012TH%20ST&city=FAYETTEVILLE&state=ar&zip=72701&format=json&census=true&censusYear=allAvailable&notStore=false&refs=PreComputedPoints&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0",
         "attributeMatchers": [
           {
             "name": "latitude",
@@ -21,7 +21,7 @@
       {
         "source": "Microsoft_Footprints",
         "vintage": "updated continuously",
-        "query": "/Api/Geocode/V5/?streetAddress=1207%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=allAvailable&notStore=false&refs=MicrosoftFootprints&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0",
+        "query": "?streetAddress=1207%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=allAvailable&notStore=false&refs=MicrosoftFootprints&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0",
         "attributeMatchers": [
           {
             "name": "latitude",
@@ -36,7 +36,7 @@
       {
         "source": "County_Parcel_Data",
         "vintage": "updated continuously",
-        "query": "/Api/Geocode/V5/?streetAddress=301%20Tarrow%20St&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=allAvailable&notStore=false&refs=CountyParcelData&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0",
+        "query": "?streetAddress=301%20Tarrow%20St&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=allAvailable&notStore=false&refs=CountyParcelData&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0",
         "attributeMatchers": [
           {
             "name": "latitude",
@@ -51,7 +51,7 @@
       {
         "source": "Open_Addresses",
         "vintage": "updated continuously",
-        "query": "/Api/Geocode/V5/?streetAddress=1211%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=allAvailable&notStore=false&refs=OpenAddresses&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0",
+        "query": "?streetAddress=1211%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=allAvailable&notStore=false&refs=OpenAddresses&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0",
         "attributeMatchers": [
           {
             "name": "latitude",
@@ -66,7 +66,7 @@
       {
         "source": "Boundary_Solutions",
         "vintage": "2012",
-        "query": "/Api/Geocode/V5/?streetAddress=1101%20Texas%20Ave&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=allAvailable&notStore=false&refs=boundarySolutionsParcelCentroids&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0",
+        "query": "?streetAddress=1101%20Texas%20Ave&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=allAvailable&notStore=false&refs=boundarySolutionsParcelCentroids&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0",
         "attributeMatchers": [
           {
             "name": "latitude",
@@ -87,7 +87,7 @@
       {
         "source": "Census_TigerLines_2022",
         "vintage": "2022",
-        "query": "/Api/Geocode/V5/?streetAddress=1211%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=allAvailable&notStore=false&refs=Census2022TigerLines&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0",
+        "query": "?streetAddress=1211%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=allAvailable&notStore=false&refs=Census2022TigerLines&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0",
         "attributeMatchers": [
           {
             "name": "latitude",
@@ -102,7 +102,7 @@
       {
         "source": "Census_TigerLines_2016",
         "vintage": "2016",
-        "query": "/Api/Geocode/V5/?streetAddress=1211%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=allAvailable&notStore=false&refs=Census2016TigerLines&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0",
+        "query": "?streetAddress=1211%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=allAvailable&notStore=false&refs=Census2016TigerLines&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0",
         "attributeMatchers": [
           {
             "name": "latitude",
@@ -117,7 +117,7 @@
       {
         "source": "Census_TigerLines_2015",
         "vintage": "2015",
-        "query": "/Api/Geocode/V5/?streetAddress=1211%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=allAvailable&notStore=false&refs=Census2015TigerLines&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0",
+        "query": "?streetAddress=1211%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=allAvailable&notStore=false&refs=Census2015TigerLines&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0",
         "attributeMatchers": [
           {
             "name": "latitude",
@@ -132,7 +132,7 @@
       {
         "source": "Census_TigerLines_2010",
         "vintage": "2010",
-        "query": "/Api/Geocode/V5/?streetAddress=1211%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=allAvailable&notStore=false&refs=Census2010TigerLines&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0",
+        "query": "?streetAddress=1211%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=allAvailable&notStore=false&refs=Census2010TigerLines&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0",
         "attributeMatchers": [
           {
             "name": "latitude",
@@ -153,7 +153,7 @@
       {
       "source": "USPS_Tiger_Zip4",
       "vintage": "updated continuously",
-        "query": "/Api/Geocode/V5/?streetAddress=1211%20Winding%20Road&city=College%20Station&state=tx&zip=77840-1200&format=json&census=true&censusYear=allAvailable&notStore=false&refs=USPSTigerZipPlus4&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0",
+        "query": "?streetAddress=1211%20Winding%20Road&city=College%20Station&state=tx&zip=77840-1200&format=json&census=true&censusYear=allAvailable&notStore=false&refs=USPSTigerZipPlus4&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0",
         "attributeMatchers": [
           {
             "name": "latitude",
@@ -168,7 +168,7 @@
       {
       "source": "Commercial_Zips",
       "vintage": "updated continuously",
-        "query": "/Api/Geocode/V5/?streetAddress=1211%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=allAvailable&notStore=false&refs=ZipCodeDownloadZips2013&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0",
+        "query": "?streetAddress=1211%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=allAvailable&notStore=false&refs=ZipCodeDownloadZips2013&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0",
         "attributeMatchers": [
           {
             "name": "latitude",
@@ -183,7 +183,7 @@
       {
       "source": "Census_ZCTAs_2020",
       "vintage": "2020",
-        "query": "/Api/Geocode/V5/?streetAddress=1211%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=allAvailable&notStore=false&refs=census2020ZCTAs&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0",
+        "query": "?streetAddress=1211%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=allAvailable&notStore=false&refs=census2020ZCTAs&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0",
         "attributeMatchers": [
           {
             "name": "latitude",
@@ -198,7 +198,7 @@
       {
       "source": "Census_ZCTAs_2010",
       "vintage": "2010",
-        "query": "/Api/Geocode/V5/?streetAddress=1211%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=allAvailable&notStore=false&refs=census2010ZCTAs&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0",
+        "query": "?streetAddress=1211%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=allAvailable&notStore=false&refs=census2010ZCTAs&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0",
         "attributeMatchers": [
           {
             "name": "latitude",
@@ -213,7 +213,7 @@
       {
       "source": "Census_ZCTAs_2000",
       "vintage": "2000",
-        "query": "/Api/Geocode/V5/?streetAddress=1211%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=allAvailable&notStore=false&refs=census2000ZCTAs&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0",
+        "query": "?streetAddress=1211%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=allAvailable&notStore=false&refs=census2000ZCTAs&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0",
         "attributeMatchers": [
           {
             "name": "latitude",
@@ -234,7 +234,7 @@
       {
       "source": "Census_Places_2020",
       "vintage": "2020",
-        "query": "/Api/Geocode/V5/?streetAddress=1211%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=allAvailable&notStore=false&refs=census2020Places&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&minscore=50&version=5.0.0",
+        "query": "?streetAddress=1211%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=allAvailable&notStore=false&refs=census2020Places&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&minscore=50&version=5.0.0",
         "attributeMatchers": [
           {
             "name": "latitude",
@@ -249,7 +249,7 @@
       {
       "source": "Census_Places_2010",
       "vintage": "2010",
-        "query": "/Api/Geocode/V5/?streetAddress=1211%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=allAvailable&notStore=false&refs=census2010Places&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&minscore=50&version=5.0.0",
+        "query": "?streetAddress=1211%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=allAvailable&notStore=false&refs=census2010Places&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&minscore=50&version=5.0.0",
         "attributeMatchers": [
           {
             "name": "latitude",
@@ -264,7 +264,7 @@
       {
       "source": "Census_Places_2000",
       "vintage": "2000",
-        "query": "/Api/Geocode/V5/?streetAddress=1211%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=allAvailable&notStore=false&refs=census2000Places&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&minscore=50&version=5.0.0",
+        "query": "?streetAddress=1211%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=allAvailable&notStore=false&refs=census2000Places&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&minscore=50&version=5.0.0",
         "attributeMatchers": [
           {
             "name": "latitude",
@@ -279,7 +279,7 @@
       {
       "source": "Census_Consolidated_Cities_2020",
       "vintage": "2020",
-        "query": "/Api/Geocode/V5/?streetAddress=2450%20S%20Milledge%20Ave&city=Athens&state=GA&zip=30605&format=json&census=true&censusYear=allAvailable&notStore=false&refs=census2020ConsolidatedCities&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&minscore=50&version=5.0.0",
+        "query": "?streetAddress=2450%20S%20Milledge%20Ave&city=Athens&state=GA&zip=30605&format=json&census=true&censusYear=allAvailable&notStore=false&refs=census2020ConsolidatedCities&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&minscore=50&version=5.0.0",
         "attributeMatchers": [
           {
             "name": "latitude",
@@ -294,7 +294,7 @@
       {
       "source": "Census_Consolidated_Cities_2010",
       "vintage": "2010",
-        "query": "/Api/Geocode/V5/?streetAddress=2450%20S%20Milledge%20Ave&city=Athens&state=GA&zip=30605&format=json&census=true&censusYear=allAvailable&notStore=false&refs=census2010ConsolidatedCities&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&minscore=50&version=5.0.0",
+        "query": "?streetAddress=2450%20S%20Milledge%20Ave&city=Athens&state=GA&zip=30605&format=json&census=true&censusYear=allAvailable&notStore=false&refs=census2010ConsolidatedCities&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&minscore=50&version=5.0.0",
         "attributeMatchers": [
           {
             "name": "latitude",
@@ -309,7 +309,7 @@
       {
       "source": "Census_County_Sub-Regions_2020",
       "vintage": "2020",
-        "query": "/Api/Geocode/V5/?streetAddress=102%20Cypress%20St&city=Abilene&state=tx&zip=79601&format=json&census=true&censusYear=allAvailable&notStore=false&refs=census2020CountySubRegions&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&minscore=40&version=5.0.0",
+        "query": "?streetAddress=102%20Cypress%20St&city=Abilene&state=tx&zip=79601&format=json&census=true&censusYear=allAvailable&notStore=false&refs=census2020CountySubRegions&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&minscore=40&version=5.0.0",
         "attributeMatchers": [
           {
             "name": "latitude",
@@ -324,7 +324,7 @@
       {
       "source": "Census_County_Sub-Regions_2010",
       "vintage": "2010",
-        "query": "/Api/Geocode/V5/?streetAddress=102%20Cypress%20St&city=Abilene&state=tx&zip=79601&format=json&census=true&censusYear=allAvailable&notStore=false&refs=census2010CountySubRegions&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&minscore=40&version=5.0.0",
+        "query": "?streetAddress=102%20Cypress%20St&city=Abilene&state=tx&zip=79601&format=json&census=true&censusYear=allAvailable&notStore=false&refs=census2010CountySubRegions&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&minscore=40&version=5.0.0",
         "attributeMatchers": [
           {
             "name": "latitude",
@@ -339,7 +339,7 @@
       {
       "source": "Census_County_Sub-Regions_2000",
       "vintage": "2000",
-        "query": "/Api/Geocode/V5/?streetAddress=102%20Cypress%20St&city=Abilene&state=tx&zip=79601&format=json&census=true&censusYear=allAvailable&notStore=false&refs=census2000CountySubRegions&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&minscore=40&version=5.0.0",
+        "query": "?streetAddress=102%20Cypress%20St&city=Abilene&state=tx&zip=79601&format=json&census=true&censusYear=allAvailable&notStore=false&refs=census2000CountySubRegions&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&minscore=40&version=5.0.0",
         "attributeMatchers": [
           {
             "name": "latitude",
@@ -360,7 +360,7 @@
       {
       "source": "Census_Counties_2020",
       "vintage": "2020",
-        "query": "/Api/Geocode/V5/?streetAddress=1211%20Winding%20Road&city=Brazos%20County&state=tx&zip=77840&format=json&census=true&censusYear=allAvailable&notStore=false&refs=census2020Counties&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&minscore=40&version=5.0.0",
+        "query": "?streetAddress=1211%20Winding%20Road&city=Brazos%20County&state=tx&zip=77840&format=json&census=true&censusYear=allAvailable&notStore=false&refs=census2020Counties&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&minscore=40&version=5.0.0",
         "attributeMatchers": [
           {
             "name": "latitude",
@@ -375,7 +375,7 @@
       {
       "source": "Census_Counties_2010",
       "vintage": "2010",
-        "query": "/Api/Geocode/V5/?streetAddress=1211%20Winding%20Road&city=Brazos%20County&state=tx&zip=77840&format=json&census=true&censusYear=allAvailable&notStore=false&refs=census2010Counties&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&minscore=40&version=5.0.0",
+        "query": "?streetAddress=1211%20Winding%20Road&city=Brazos%20County&state=tx&zip=77840&format=json&census=true&censusYear=allAvailable&notStore=false&refs=census2010Counties&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&minscore=40&version=5.0.0",
         "attributeMatchers": [
           {
             "name": "latitude",
@@ -390,7 +390,7 @@
       {
       "source": "Census_Counties_2000",
       "vintage": "2000",
-        "query": "/Api/Geocode/V5/?streetAddress=1211%20Winding%20Road&city=Brazos%20County&state=tx&zip=77840&format=json&census=true&censusYear=allAvailable&notStore=false&refs=census2000Counties&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&minscore=40&version=5.0.0",
+        "query": "?streetAddress=1211%20Winding%20Road&city=Brazos%20County&state=tx&zip=77840&format=json&census=true&censusYear=allAvailable&notStore=false&refs=census2000Counties&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&minscore=40&version=5.0.0",
         "attributeMatchers": [
           {
             "name": "latitude",
@@ -411,7 +411,7 @@
       {
       "source": "Census_States_2020",
       "vintage": "2020",
-        "query": "/Api/Geocode/V5/?streetAddress=1211%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=allAvailable,2020&notStore=false&refs=census2020States&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&minscore=5&version=5.0.0",
+        "query": "?streetAddress=1211%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=allAvailable,2020&notStore=false&refs=census2020States&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&minscore=5&version=5.0.0",
         "attributeMatchers": [
           {
             "name": "latitude",
@@ -426,7 +426,7 @@
       {
       "source": "Census_States_2010",
       "vintage": "2010",
-        "query": "/Api/Geocode/V5/?streetAddress=1211%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=allAvailable,2020&notStore=false&refs=census2010States&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&minscore=5&version=5.0.0",
+        "query": "?streetAddress=1211%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=allAvailable,2020&notStore=false&refs=census2010States&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&minscore=5&version=5.0.0",
         "attributeMatchers": [
           {
             "name": "latitude",
@@ -447,7 +447,7 @@
       {
       "source": "censusYear=allAvailable (1990, 2000, 2010, 2020)",
       "vintage": "1990, 2000, 2010, 2020",
-        "query": "/Api/Geocode/V5/?streetAddress=1207%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=allAvailable&notStore=false&refs=MicrosoftFootprints&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0",
+        "query": "?streetAddress=1207%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=allAvailable&notStore=false&refs=MicrosoftFootprints&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0",
         "attributeMatchers": [
           {
             "name": "latitude",
@@ -462,7 +462,7 @@
       {
       "source": "censusYear=1990",
       "vintage": "1990",
-        "query": "/Api/Geocode/V5/?streetAddress=1207%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=1990&notStore=false&refs=MicrosoftFootprints&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0",
+        "query": "?streetAddress=1207%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=1990&notStore=false&refs=MicrosoftFootprints&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0",
         "attributeMatchers": [
           {
             "name": "latitude",
@@ -477,7 +477,7 @@
       {
       "source": "censusYear=2000",
       "vintage": "2000",
-        "query": "/Api/Geocode/V5/?streetAddress=1207%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=2000&notStore=false&refs=MicrosoftFootprints&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0",
+        "query": "?streetAddress=1207%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=2000&notStore=false&refs=MicrosoftFootprints&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0",
         "attributeMatchers": [
           {
             "name": "latitude",
@@ -492,7 +492,7 @@
       {
       "source": "censusYear=2010",
       "vintage": "2010",
-        "query": "/Api/Geocode/V5/?streetAddress=1207%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=2010&notStore=false&refs=MicrosoftFootprints&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0",
+        "query": "?streetAddress=1207%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=2010&notStore=false&refs=MicrosoftFootprints&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0",
         "attributeMatchers": [
           {
             "name": "latitude",
@@ -507,7 +507,7 @@
       {
       "source": "censusYear=2020",
       "vintage": "2020",
-        "query": "/Api/Geocode/V5/?streetAddress=1207%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=2020&notStore=false&refs=MicrosoftFootprints&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0",
+        "query": "?streetAddress=1207%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=2020&notStore=false&refs=MicrosoftFootprints&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0",
         "attributeMatchers": [
           {
             "name": "latitude",
@@ -522,7 +522,7 @@
       {
       "source": "censusYear=2000,2010",
       "vintage": "2000, 2010",
-        "query": "/Api/Geocode/V5/?streetAddress=1207%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=2000,2010&notStore=false&refs=MicrosoftFootprints&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0",
+        "query": "?streetAddress=1207%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=2000,2010&notStore=false&refs=MicrosoftFootprints&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0",
         "attributeMatchers": [
           {
             "name": "latitude",
@@ -537,7 +537,7 @@
       {
       "source": "censusYear=1990,2000,2010",
       "vintage": "1990, 2000, 2010",
-        "query": "/Api/Geocode/V5/?streetAddress=1207%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=1990,2000,2010&notStore=false&refs=MicrosoftFootprints&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0",
+        "query": "?streetAddress=1207%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=1990,2000,2010&notStore=false&refs=MicrosoftFootprints&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0",
         "attributeMatchers": [
           {
             "name": "latitude",
@@ -552,7 +552,7 @@
       {
       "source": "censusYear=1990,2000,2010,2020",
       "vintage": "1990, 2000, 2010, 2020",
-        "query": "/Api/Geocode/V5/?streetAddress=1207%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=1990,2000,2010,2020&notStore=false&refs=MicrosoftFootprints&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0",
+        "query": "?streetAddress=1207%20Winding%20Road&city=College%20Station&state=tx&zip=77840&format=json&census=true&censusYear=1990,2000,2010,2020&notStore=false&refs=MicrosoftFootprints&ShouldOutputParsedAddress=true&ShouldOutputReferenceFeature=true&ShouldOutputReferenceFeatureAddress=true&version=5.0.0",
         "attributeMatchers": [
           {
             "name": "latitude",

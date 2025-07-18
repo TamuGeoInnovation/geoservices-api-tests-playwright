@@ -1,18 +1,19 @@
-import { test, expect } from "@playwright/test";
-import { TestCategory } from "../interfaces/test-case.interface";
-import { assertAttributeMatchers } from "../utils/attribute-matcher";
+import dotenv from "dotenv";
 import { parse } from "csv-parse/sync";
 import fs from "fs";
 
+import { testAttribute } from "../utils/attribute-matcher";
 
-import dotenv from "dotenv";
+import { test, expect } from "@playwright/test";
+
+
 var path = require("path");
 
 
-//Get .csv file name and stabish a connection to the desired .csv file for the lost of Domains to test
+//Get .csv file name and estabish a connection to the desired .csv file for the list of Domains to test
 //NOTE: As of current version, the first Domain listed will be used as the base to be tested against.
-const domainCSVlocation = "../data/Domain_test2.csv";
-const addressCSVlocation = "../data/geocoding-addresses-single.csv";
+const domainCSVlocation = "../data/Domain_testing2.csv";
+const addressCSVlocation = "../data/geocoding-addresses-full.csv";
 
 const domainsCSV = parse(fs.readFileSync(path.join(__dirname, domainCSVlocation)),{
   //Insert desired .csv formatting parameters.
@@ -35,21 +36,21 @@ test.describe("Geocoding Tests", () => {
       });
 
       // Create individual tests for each attribute case in the row
-      for(var iter: number = 0; iter < row['num_of_attributes']; iter+=1){
-        const testName = row[(2*iter) +1]; //testName = name of attribute being tested (ex: logitude, latitude)
-        const testLocation = row[(2*iter) +2] //location of data being tested in the API
+      for(let iter: number = 0; iter < row['num_of_attributes']; iter+=1){
+        const testName = row["attribute"+(iter+1)+"_name"]; //testName = name of attribute being tested (ex: logitude, latitude)
+        const testLocation = row["attribute"+(iter+1)+"_location"] //testLocation = location of data being tested in the API;
         test(`${testName} - Test ${iter + 1}:`, async ({
           page,
         }) => {
 
-          const domains = domainsCSV[0];
+          const domains: Array<string> = domainsCSV[0];
           const apiKey = process.env.API_KEY || "demo";
-          var responses: number[] = [];
-          for(const index in domains){
+          let responses: number[] = [];
+          for(const domain of domains){
             
             // Append the API Key query param to the query URL. Pull this from your environment variables and default to 'demo' test key.
             // console.log(process.env);
-            const fullQuery = domains[index]+row["URLaddress"];
+            const fullQuery = domain+row["URLaddress"];
             //console.log(fullQuery);
             const queryWithApiKey = new URL(fullQuery);
             queryWithApiKey.searchParams.append("apikey", apiKey);
@@ -75,28 +76,27 @@ test.describe("Geocoding Tests", () => {
             responses.push(responseData);
           }
 
-          // Check if testCase has attributeMatchers. If none, skip the testing and assume truthy response.
-          // If testCase does have matchers, loop through them and validate each one.
-          var success: boolean[] = [];
+          // Check if current URL has attributes to test. If none, skip the testing and assume truthy response.
+          // If current URL does have matchers, loop through them and validate each one.
+          let testResults: boolean[] = [];
           if (row["num_of_attributes"] > 0){   
             for (const index in responses){
-              success.push(
-                assertAttributeMatchers(
+              testResults.push(
+                testAttribute(
                   responses[0], //Set as the expectation for responses[index]
                   responses[index], //Currently tested response
                   domains[index], //Provides name of which domain in being tested
-                  testLocation
+                  testLocation //Provide path to data to test
                 )
               )
+            }
+            for(const result of testResults){
+              expect(result).toBeTruthy();
             }
           } else {
             console.log(
               "No attribute matchers defined for this test case, skipping validation."
             );
-          }
-
-          for(const index in success){
-            expect(success[index]).toBeTruthy();
           }
 
           // Log test completion
