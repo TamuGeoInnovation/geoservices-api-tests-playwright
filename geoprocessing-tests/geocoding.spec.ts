@@ -1,82 +1,101 @@
-import { test, expect } from "@playwright/test";
-import { TestCategory } from "../interfaces/test-case.interface";
-import { assertAttributeMatchers } from "../utils/attribute-matcher";
-
 import dotenv from "dotenv";
+import { parse } from "csv-parse/sync";
+import fs from "fs";
+
+import { testAttribute } from "../utils/attribute-matcher";
+
+import { test, expect } from "@playwright/test";
+
+
 var path = require("path");
+
+
+//Get .csv file name and estabish a connection to the desired .csv file for the list of domains to test
+//NOTE: As of current version, the first Domain listed will be used as the base for all other domains to be tested against.
+const domainCSVlocation = "../data/Domain_testing2.csv";
+const addressCSVlocation = "../data/geocoding-addresses-full.csv";
+
+const domainsCSV = parse(fs.readFileSync(path.join(__dirname, domainCSVlocation), 'utf8'),{
+  //Insert desired .csv formatting parameters.
+});
+const addressesCSV = parse(fs.readFileSync(path.join(__dirname, addressCSVlocation), 'utf8'),{
+  //Insert desired .csv formatting parameters.
+  columns: true //Sets first row of .csv to be the names of each column
+  /*
+    Proper .csv header format:
+    Name,URLaddress,num_of_attributes,attribute1_name,attribute1_location,attribute2_name,attribute2_location... ,attributeX_name,attributeX_location
+  */
+});
 
 dotenv.config({ path: path.resolve(__dirname, "../.env") });
 
-// Load the test data once at module level
-const categories: Array<TestCategory> = require("../data/geocoding-examples.json");
-
-console.log(`Loaded ${categories.length} geocoding test categories`);
+console.log(`Loaded ${addressesCSV.length} geocoding test categories`);
 
 test.describe("Geocoding Tests", () => {
-  // Dynamically create test suites for each category
-  categories.forEach((category) => {
-    test.describe(category.name, () => {
+  // Dynamically create test suites for each row in the .csv
+  addressesCSV.forEach((row) => {
+    test.describe(row['Name'], () => {
       test.beforeAll(() => {
-        console.log(`Starting ${category.name} tests`);
+        console.log(`Starting ${row['Name']} test`);
       });
 
-      // Create individual tests for each test case in the category
-      category.tests.forEach((testCase, index) => {
-        test(`${category.name} - Test ${index + 1}: ${testCase.source}`, async ({
+      // Create individual tests for each attribute case in the row
+      for(let iter: number = 0; iter < row['num_of_attributes']; iter+=1){
+        const testName = row["attribute"+(iter+1)+"_name"]; //testName = name of attribute being tested (ex: logitude, latitude)
+        const testLocation = row["attribute"+(iter+1)+"_location"] //testLocation = location of data being tested in the API;
+        test(`${testName} - Test ${iter + 1}:`, async ({
           page,
         }) => {
-          console.log(`Running test: ${testCase.source} (${testCase.vintage})`);
 
-          // Append the API Key query param to the query URL. Pull this from your environment variables and default to 'demo' test key.
-          // console.log(process.env);
-
+          const domains: Array<string> = domainsCSV[0];
           const apiKey = process.env.API_KEY || "demo";
-          const queryWithApiKeyL = new URL(testCase.queryLegacy);
-          const queryWithApiKeyk8 = new URL(testCase.queryk8);
-          queryWithApiKeyL.searchParams.append("apikey", apiKey);
-          queryWithApiKeyk8.searchParams.append("apikey", apiKey);
+          let responses: number[] = [];
+          for(const domain of domains){
+            
+            // Append the API Key query param to the query URL. Pull this from your environment variables and default to 'demo' test key.
+            // console.log(process.env);
+            const fullQuery = domain+row["URLaddress"];
+            //console.log(fullQuery);
+            const queryWithApiKey = new URL(fullQuery);
+            queryWithApiKey.searchParams.append("apikey", apiKey);
 
-          // DEBUG:
-          // Log the full query URL for debugging
-          // console.log(`QueryLegacy URL: ${queryWithApiKeyL.toString()}`);
-          // console.log(`Queryk8 URL: ${queryWithApiKeyk8.toString()}`);
+            // DEBUG:
+            // Log the full query URL for debugging
+            // console.log(`query URL: ${queryWithApiKey.toString()}`);
 
-          // Make the geocoding API request
-          const responseLeg = await page.request.get(queryWithApiKeyL.toString());
-          const responsek8 = await page.request.get(queryWithApiKeyk8.toString());
+            // Make the geocoding API request
+            const response = await page.request.get(queryWithApiKey.toString());
 
-          // Test for 200 OK response. This doesn't guarantee the query is valid, but it's a good start.
-          expect(responseLeg.ok()).toBeTruthy();
-          expect(responsek8.ok()).toBeTruthy();
+            // Test for 200 OK response. This doesn't guarantee the query is valid, but it's a good start.
+            expect(response.ok()).toBeTruthy();
 
-          // Because GSVCS API's don't conform exactly to any standard, the request might return a 200 OK status even if the query is invalid or returns no results.
-          // So we check the status code explicitly
-          const responseDataLeg = await responseLeg.json();
-          const responseDatak8 = await responsek8.json();
+            // Because GSVCS API's don't conform exactly to any standard, the request might return a 200 OK status even if the query is invalid or returns no results.
+            // So we check the status code explicitly
+            const responseData = await response.json();
+            
+            // Basic validation - you can expand this based on your requirements
+            expect(responseData).toBeDefined();
 
-          // DEBUG:
-          // Log response for debudebugging;
-          // console.log(responseData);
+            // Add the response to a running array of all queries
+            responses.push(responseData);
+          }
 
-          //expect(responseDataLeg.statusCode).toBe(200);
-          //expect(responseDatak8.statusCode).toBe(200);
-
-          // Basic validation - you can expand this based on your requirements
-          expect(responseDataLeg).toBeDefined();
-          expect(responseDatak8).toBeDefined();
-
-          // Check if testCase has attributeMatchers. If none, skip the testing and assume truthy response.
-          // If testCase does have matchers, loop through them and validate each one.
-          if (
-            testCase.attributeMatchers &&
-            testCase.attributeMatchers.length > 0
-          ) {
-             assertAttributeMatchers(
-              responseDataLeg,
-              responseDatak8,
-              testCase.attributeMatchers,
-              expect
-            );
+          // Check if current URL has attributes to test. If none, skip the testing and assume truthy response.
+          let testResults: boolean[] = [];
+          if (row["num_of_attributes"] > 0){   
+            for (const index in responses){
+              testResults.push(
+                testAttribute(
+                  responses[0], //Set as the expectation for responses[index]
+                  responses[index], //Currently tested response
+                  domains[index], //Provides name of which domain in being tested
+                  testLocation //Provide path to data to be tested
+                )
+              )
+            }
+            for(const result of testResults){ //Test all results to be true. 
+              expect(result).toBeTruthy();
+            }
           } else {
             console.log(
               "No attribute matchers defined for this test case, skipping validation."
@@ -84,9 +103,9 @@ test.describe("Geocoding Tests", () => {
           }
 
           // Log test completion
-          console.log(`Completed test: ${testCase.source}`);
+          console.log(`Completed test: ${testName}`);
         });
-      });
+      };
     });
   });
 });
